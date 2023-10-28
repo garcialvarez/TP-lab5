@@ -29,8 +29,7 @@ public class GradeUsingFileRepositoryImpl implements GradeRepository {
   private List<Grade> loadGrades(){
     logger.info( "Cargando los datos desde archivo" );
     List<String> plainTextGradeList =  readFileWithGrades();
-    List<Grade> gradeList = plainTextGradeList.stream().map( this::buildGrade ).toList();
-    return gradeList;
+    return plainTextGradeList.stream().map( this::buildGrade ).toList();
   }
 
   private List<String> readFileWithGrades(){
@@ -54,9 +53,7 @@ public class GradeUsingFileRepositoryImpl implements GradeRepository {
      */
     String[] questionArray = plainTextGrade.split(",");//En el archivo las notas vienen separadas por comas por ejemplo: UNIDAD 1,4.5D,2023-08-01
 
-    Grade grade = new Grade( questionArray[0], Double.valueOf(questionArray[1]), LocalDate.parse( questionArray[2], DateTimeFormatter.ISO_DATE));
-
-    return grade;
+    return new Grade( questionArray[0], Double.valueOf(questionArray[1]), LocalDate.parse( questionArray[2], DateTimeFormatter.ISO_DATE));
   }
 
 
@@ -83,7 +80,5 @@ public class GradeUsingFileRepositoryImpl implements GradeRepository {
   private Predicate<Grade> isTheGradeOfTheProject(Grade newGrade) {
     return p -> p.project().equals( newGrade.project() );
   }
-
-
 
 }
