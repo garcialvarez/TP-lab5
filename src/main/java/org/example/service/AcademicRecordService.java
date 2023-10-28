@@ -10,8 +10,6 @@ public interface AcademicRecordService {
 
   Integer sumNumberOfGrades();
 
-  void printGrades(List<Grade> gradeList);
-
 
   Grade getGrade(String proyecto) throws GradeNotFoundException;
 

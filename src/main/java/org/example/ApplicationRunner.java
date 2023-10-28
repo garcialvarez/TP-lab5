@@ -8,21 +8,26 @@ import org.example.service.AcademicRecordServiceImpl;
 
 import java.text.MessageFormat;
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class ApplicationRunner {
+
+  static void printGrades(List<Grade> gradesList){
+    gradesList.forEach(System.out::println);
+  }
   public static void main(String[] args) {
 
     AcademicRecordService academicRecordService =
         new AcademicRecordServiceImpl(new GradeUsingFileRepositoryImpl());
 
     System.out.println("Notas iniciales:");
-    academicRecordService.printGrades(academicRecordService.listAllGrades());
+    printGrades(academicRecordService.listAllGrades());
 
     academicRecordService.addGrade(new Grade("PARCIAL", 4.5D, LocalDate.now()));
 
     System.out.println("Notas despues de adicionar una nueva:");
-    academicRecordService.printGrades(academicRecordService.listAllGrades());
+    printGrades(academicRecordService.listAllGrades());
 
     System.out.println(
             MessageFormat.format(

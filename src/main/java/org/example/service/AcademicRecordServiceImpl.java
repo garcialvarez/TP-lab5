@@ -45,11 +45,6 @@ public class AcademicRecordServiceImpl implements AcademicRecordService {
   }
 
   @Override
-  public void printGrades(List<Grade> gradeList){
-    gradeList.forEach( System.out::println );
-  }
-
-  @Override
   public List<Grade> listAllGrades() {
     return this.gradeRepository.findAllGrades();
   }
