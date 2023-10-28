@@ -45,12 +45,19 @@ public class AcademicRecordServiceImpl implements AcademicRecordService {
   }
 
   @Override
+  public void printGrades(List<Grade> gradeList){
+    gradeList.forEach( System.out::println );
+  }
+
+  @Override
   public List<Grade> listAllGrades() {
-    return null;
+    return this.gradeRepository.findAllGrades();
   }
 
   @Override
   public Grade addGrade(Grade newGrade) {
-    return null;
+    List<Grade> gradeList = this.gradeRepository.findAllGrades();
+    gradeList.add(newGrade);
+    return newGrade;
   }
 }
